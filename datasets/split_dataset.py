@@ -7,21 +7,11 @@
 import re
 
 
-def split_parallel_datasets(file_path_de, file_path_en, output_dict_de, output_dict_en):
-    """
-    Split parallel German-English datasets into train, test, and dev sets based on specified percentages,
-    and filter out datapoints that contain any of the specified keywords in either language.
-
-    :param file_path_de: Path to the German dataset file.
-    :param file_path_en: Path to the English dataset file.
-    :param output_dict_de: Dictionary with keys 'train', 'test', 'dev' and corresponding output file paths for German.
-    :param output_dict_en: Dictionary with keys 'train', 'test', 'dev' and corresponding output file paths for English.
-    """
-
-    PERCENTAGES = {"train": 96, "test": 2, "dev": 2}
-    KEYWORDS = [
-        "archived",
-        "retrieved",
+def split_parallel_datasets(
+    german_file_path, english_file_path, german_output_paths, english_output_paths
+):
+    # Keywords to match for exact lines
+    EXACT_KEYWORDS = [
         "References",
         "External links",
         "See also",
@@ -33,84 +23,75 @@ def split_parallel_datasets(file_path_de, file_path_en, output_dict_de, output_d
         "History",
         "Leben",
         "Geschichte",
+        "+ Add translation",
     ]
+    # Keywords to search for within lines
+    CONTAINS_KEYWORDS = ["archived", "retrieved", "↑", "→", "http"]
 
-    # Compile a pattern for keywords to filter lines
-    pattern = re.compile(
-        r"|".join(re.escape(keyword) for keyword in KEYWORDS), re.IGNORECASE
+    # Compile patterns for filtering
+    exact_pattern = re.compile(
+        r"^(" + r"|".join(map(re.escape, EXACT_KEYWORDS)) + r")$", re.IGNORECASE
     )
-
-    with open(file_path_de, "r", encoding="utf-8") as f_de, open(
-        file_path_en, "r", encoding="utf-8"
-    ) as f_en:
-        lines_de = f_de.readlines()
-        lines_en = f_en.readlines()
-
-    print(f"Original Dataset size: {len(lines_de)}")
-
-    assert len(lines_de) == len(
-        lines_en
-    ), "German and English datasets must have the same number of lines."
-
-    filtered_lines_de, filtered_lines_en = [], []
-    for line_de, line_en in zip(lines_de, lines_en):
-        if not (pattern.match(line_de.strip()) or pattern.match(line_en.strip())):
-            filtered_lines_de.append(line_de)
-            filtered_lines_en.append(line_en)
-
-    print(f"Filtereds Dataset size: {len(filtered_lines_de)}")
-
-    # Split filtered lines into train, test, and dev
-    total_samples = len(filtered_lines_de)
-    train_idx = int(total_samples * (PERCENTAGES["train"] / 100))
-    test_idx = train_idx + int(total_samples * (PERCENTAGES["test"] / 100))
-
-    train_lines_de, test_lines_de, dev_lines_de = (
-        filtered_lines_de[:train_idx],
-        filtered_lines_de[train_idx:test_idx],
-        filtered_lines_de[test_idx:],
+    contains_pattern = re.compile(
+        r"|".join(map(re.escape, CONTAINS_KEYWORDS)), re.IGNORECASE
     )
-    train_lines_en, test_lines_en, dev_lines_en = (
-        filtered_lines_en[:train_idx],
-        filtered_lines_en[train_idx:test_idx],
-        filtered_lines_en[test_idx:],
-    )
+    digit_pattern_two = re.compile(r"(\d{2,})")
+    digit_pattern_five = re.compile(r"(\d{5,})")
 
-    # Write the splits to corresponding output files for German and English
-    with open(output_dict_de["train"], "w", encoding="utf-8") as f:
-        f.writelines(train_lines_de)
-    with open(output_dict_de["test"], "w", encoding="utf-8") as f:
-        f.writelines(test_lines_de)
-    with open(output_dict_de["dev"], "w", encoding="utf-8") as f:
-        f.writelines(dev_lines_de)
+    def filter_line(line: str):
+        return (
+            exact_pattern.match(line.strip())
+            or contains_pattern.search(line)
+            or len(digit_pattern_two.findall(line)) > 2
+            or len(digit_pattern_five.findall(line)) > 0
+        )
 
-    with open(output_dict_en["train"], "w", encoding="utf-8") as f:
-        f.writelines(train_lines_en)
-    with open(output_dict_en["test"], "w", encoding="utf-8") as f:
-        f.writelines(test_lines_en)
-    with open(output_dict_en["dev"], "w", encoding="utf-8") as f:
-        f.writelines(dev_lines_en)
+    filtered_lines = []
+    with open(german_file_path, encoding="utf-8") as german_file, open(
+        english_file_path, encoding="utf-8"
+    ) as english_file:
+        for german_line, english_line in zip(german_file, english_file):
+            if not (filter_line(german_line) or filter_line(english_line)):
+                filtered_lines.append((german_line, english_line))
 
-    print(
-        f"Dataset split completed with {len(train_lines_de)} train, {len(test_lines_de)} test, and {len(dev_lines_de)} dev samples for German and English datasets."
-    )
+    print(f"Filtered Dataset size: {len(filtered_lines)}")
+
+    total_samples = len(filtered_lines)
+    train_end = int(total_samples * 0.96)
+    test_end = int(total_samples * 0.98)
+    splits = {
+        "train": filtered_lines[:train_end],
+        "test": filtered_lines[train_end:test_end],
+        "dev": filtered_lines[test_end:],
+    }
+
+    # Write each split to the corresponding output files
+    for split_name, split_data in splits.items():
+        with open(
+            german_output_paths[split_name], "w", encoding="utf-8"
+        ) as german_output, open(
+            english_output_paths[split_name], "w", encoding="utf-8"
+        ) as english_output:
+            for german_line, english_line in split_data:
+                german_output.write(german_line)
+                english_output.write(english_line)
 
 
-file_path = "./datasets/de-en.txt"
-split_path = "/sample_data"
-file_path_de = f"{file_path}/wikimedia.de-en.de"
-file_path_en = f"{file_path}/wikimedia.de-en.en"
+# Define file paths
+base_path = "./datasets/de-en.txt"
+output_folder = "/sample_data"
+german_file_path = f"{base_path}/wikimedia.de-en.de"
+english_file_path = f"{base_path}/wikimedia.de-en.en"
 
-output_dict_de = {
-    "train": f"{file_path}{split_path}/train.wikimedia.de-en.de",
-    "test": f"{file_path}{split_path}/tst.wikimedia.de-en.de",
-    "dev": f"{file_path}{split_path}/dev.wikimedia.de-en.de",
+german_output_paths = {
+    key: f"{base_path}{output_folder}/{split}.wikimedia.de-en.de"
+    for key, split in {"train": "train", "test": "tst", "dev": "dev"}.items()
+}
+english_output_paths = {
+    key: f"{base_path}{output_folder}/{split}.wikimedia.de-en.en"
+    for key, split in {"train": "train", "test": "tst", "dev": "dev"}.items()
 }
 
-output_dict_en = {
-    "train": f"{file_path}{split_path}/train.wikimedia.de-en.en",
-    "test": f"{file_path}{split_path}/tst.wikimedia.de-en.en",
-    "dev": f"{file_path}{split_path}/dev.wikimedia.de-en.en",
-}
-
-split_parallel_datasets(file_path_de, file_path_en, output_dict_de, output_dict_en)
+split_parallel_datasets(
+    german_file_path, english_file_path, german_output_paths, english_output_paths
+)
