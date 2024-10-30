@@ -51,7 +51,7 @@ for lang, filename in files.items():
     input_file = f"{file_path}/{filename}"
     output_dict = {
         'train': f"{file_path}/train.{filename}",
-        'test': f"{file_path}/test.{filename}",
+        'test': f"{file_path}/tst.{filename}",
         'dev': f"{file_path}/dev.{filename}"
     }
     split_dataset(input_file, output_dict, percentages)
