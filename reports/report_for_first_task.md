@@ -16,7 +16,7 @@ During the preprocessing of the Wikimedia dataset for training our model, we enc
 | Lines with excessive numerical data, such as multiple dates, reference numbers, or codes, which are not useful for training a translation model and could make the performance worse.             | Used regular expressions to filter out lines containing four or more occurrences of numbers with three or more digits, or any occurrence of numbers with five or more digits.                      |
 
 
-## Challanges we stumbled upone
+## Challanges we stumbled upon
 - Running Notebook on cluster.
 - Finding a suitable dataset.
   - Which critirias are decisive?
