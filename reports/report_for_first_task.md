@@ -1,7 +1,7 @@
 # Lap Report for First Notebook
 
 ## Decisions we made
-- First we want to focus on translation of knowladge based translation.
+- First we want to focus on translation of knowladge based text.
 - We want to use the Wikimedia dataset from OPUS. For more information on the dataset visit http://opus.lingfil.uu.se/LREC2012.txt. 
 - Our model should translate from german to english.
 
