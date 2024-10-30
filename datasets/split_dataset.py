@@ -35,15 +35,15 @@ def split_parallel_datasets(
     contains_pattern = re.compile(
         r"|".join(map(re.escape, CONTAINS_KEYWORDS)), re.IGNORECASE
     )
-    digit_pattern_two = re.compile(r"(\d{2,})")
+    digit_pattern_two = re.compile(r"(\d{3,})")
     digit_pattern_five = re.compile(r"(\d{5,})")
 
     def filter_line(line: str):
         return (
             exact_pattern.match(line.strip())
             or contains_pattern.search(line)
-            or len(digit_pattern_two.findall(line)) > 2
-            or len(digit_pattern_five.findall(line)) > 0
+            or len(digit_pattern_two.findall(line)) >= 4
+            or len(digit_pattern_five.findall(line)) >= 1
         )
 
     filtered_lines = []
