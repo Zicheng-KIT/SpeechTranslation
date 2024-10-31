@@ -13,7 +13,7 @@ def split_parallel_datasets(
         english_file_path, encoding="utf-8"
     ) as english_file:
         for german_line, english_line in zip(german_file, english_file):
-            if german_line.strip() and english_line.strip():
+            if german_line.strip() and english_line.strip() and len(german_line.split()) <= 25:
                 filtered_lines.append((german_line, english_line))
 
     print(f"Filtered Dataset size: {len(filtered_lines)}")
