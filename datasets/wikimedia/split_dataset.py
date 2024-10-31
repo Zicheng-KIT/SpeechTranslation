@@ -78,17 +78,18 @@ def split_parallel_datasets(
 
 
 # Define file paths
-base_path = "./datasets/de-en.txt"
+name = "wikimedia"
+base_path = f"./datasets/{name}"
 output_folder = "/sample_data"
-german_file_path = f"{base_path}/wikimedia.de-en.de"
-english_file_path = f"{base_path}/wikimedia.de-en.en"
+german_file_path = f"{base_path}/{name}.de-en.de"
+english_file_path = f"{base_path}/{name}.de-en.en"
 
 german_output_paths = {
-    key: f"{base_path}{output_folder}/{split}.wikimedia.de-en.de"
+    key: f"{base_path}{output_folder}/{split}.de-en.de"
     for key, split in {"train": "train", "test": "tst", "dev": "dev"}.items()
 }
 english_output_paths = {
-    key: f"{base_path}{output_folder}/{split}.wikimedia.de-en.en"
+    key: f"{base_path}{output_folder}/{split}.de-en.en"
     for key, split in {"train": "train", "test": "tst", "dev": "dev"}.items()
 }
 

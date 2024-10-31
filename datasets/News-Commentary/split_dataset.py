@@ -47,11 +47,11 @@ german_file_path = f"{base_path}/{name}.de-en.de"
 english_file_path = f"{base_path}/{name}.de-en.en"
 
 german_output_paths = {
-    key: f"{base_path}{output_folder}/{split}.{name}.de-en.de"
+    key: f"{base_path}{output_folder}/{split}.de-en.de"
     for key, split in {"train": "train", "test": "tst", "dev": "dev"}.items()
 }
 english_output_paths = {
-    key: f"{base_path}{output_folder}/{split}.{name}.de-en.en"
+    key: f"{base_path}{output_folder}/{split}.de-en.en"
     for key, split in {"train": "train", "test": "tst", "dev": "dev"}.items()
 }
 
