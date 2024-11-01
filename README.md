@@ -2,9 +2,9 @@
 ### Todo
 - [x] Split up dataset into dev, test, train
 - [x] use new datasets in the notebook
-- [ ] train the model with hyperparameters
+- [x] train the model with hyperparameters
 - [ ] use different evaluation methods to evaluate the model
-- [ ] write a lab report about the findings
+- [x] write a lab report about the findings
 
 - [x] find out how to run a jupyter notebook on the bwUniCluster 2.0
   
