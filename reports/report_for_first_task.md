@@ -16,7 +16,7 @@ During the preprocessing of the Wikimedia dataset for training our model, we enc
 | Lines with excessive numerical data, such as multiple dates, reference numbers, or codes, which are not useful for training a translation model and could make the performance worse.             | Used regular expressions to filter out lines containing four or more occurrences of numbers with three or more digits, or any occurrence of numbers with five or more digits.                      |
 
 ## Second Try with News-Commentary dataset
-- One the second try we focus on a more cleaner set. The Wikimedia has a lot of syntax and headlines which make it hard to clean.
+- On the second try we focus on a more cleaner set. The Wikimedia has a lot of syntax and headlines which make it hard to clean.
 - See https://opus.nlpl.eu/News-Commentary/de&en/v16/News-Commentary for the dataset we used.
 - First we removed rows with more than 20 words and empty lines.
 - The results were hardly better than with the wikimedia dataset.
