@@ -1,4 +1,4 @@
-# Lap Report for First Notebook
+# Lab Report for First Notebook
 We organize our project on this https://github.com/JohannesWesch/SpeechTranslation github repo.    
 We decided our model should translate from german to english.
 We had problems getting good results after training with the Wikimedia and News-Commentary dataset. After much cleaning and optimizing of the first two datasets we also tried the ted talk 2020 dataset.
