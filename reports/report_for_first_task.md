@@ -27,7 +27,7 @@ During the preprocessing of the Wikimedia dataset for training our model, we enc
 - We used the Ted Talk 2020 dataset for that.
 - Our results have been much better with this set.
   - The BLEU score was 30,2.
-  - And the hypothesis output is by looking through it very near the reference. 
+  - The output of the hypothesis closely aligns with the reference upon review.
 
 ## Challanges we stumbled upon
 - Running Notebook on cluster.
