@@ -1,5 +1,5 @@
 # Lap Report for First Notebook
-We organize our porject on this https://github.com/JohannesWesch/SpeechTranslation github repo.    
+We organize our project on this https://github.com/JohannesWesch/SpeechTranslation github repo.    
 We decided our model should translate from german to english.
 We had problems getting good results after training with the Wikimedia and News-Commentary dataset. After much cleaning and optimizing of the first two datasets we also tried the ted talk 2020 dataset.
   We did this, because we were suggesting, that the similar conversational style of structure of the dataset, similar to the example ted talk 2010 dataset, is the reason why the trained model is performing much better. The more shallow and general talking is much easier to work with than the high density of fact based data of the first two models.
