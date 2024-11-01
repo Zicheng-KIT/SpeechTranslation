@@ -4,7 +4,7 @@ We decided our model should translate from german to english.
 We had problems getting good results after training with the Wikimedia and News-Commentary dataset. After much cleaning and optimizing of the first two datasets we also tried the ted talk 2020 dataset.
   We did this, because we were suggesting, that the similar conversational style of structure of the dataset, similar to the example ted talk 2010 dataset, is the reason why the trained model is performing much better. The more shallow and general talking is much easier to work with than the high density of fact based data of the first two models.
 ## First Try with Wikimedia dataset
-- First we want to focus on translation of knowladge based text.
+- First we want to focus on translation of knowledge based text.
 - We want to use the Wikimedia dataset from OPUS. For more information on the dataset visit http://opus.lingfil.uu.se/LREC2012.txt. 
 ### Data Preprocessing
 During the preprocessing of the Wikimedia dataset for training our model, we encountered various types of unwanted content that could degrade the quality of our model. To enhance the dataset's quality, we applied a series of filters to remove irrelevant or noisy data, ensuring that the training material consisted of clean and meaningful text suitable for translation tasks.
