@@ -32,7 +32,7 @@ During the preprocessing of the Wikimedia dataset for training our model, we enc
 ## Challanges we stumbled upon
 - Running Notebook on cluster.
 - Finding a suitable dataset.
-  - Which critirias are decisive?
+  - What criteria are crucial?
   - Cleaning the dataset in order to make it usable for our purpose.
 
 ### Contributors
