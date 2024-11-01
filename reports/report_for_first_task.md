@@ -26,7 +26,7 @@ During the preprocessing of the Wikimedia dataset for training our model, we enc
 - With our final thoughts on the second try we decided to try a more conversational type of dataset without much contextual references and knowledge based information.
 - We used the Ted Talk 2020 dataset for that.
 - Our results have been much better with this set.
-  - The bluescore was 30,2.
+  - The BLEU score was 30,2.
   - And the hypothesis output is by looking through it very near the reference. 
 
 ## Challanges we stumbled upon
