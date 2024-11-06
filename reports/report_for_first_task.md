@@ -71,9 +71,9 @@ There should be further improvement with continued training, but we estimate tha
 ## Fifth Try: News-Commentary Dataset cleaned by Bicleaner with mBART
 We use Bicleaner for data cleaning and select only rows with a confidence rate greater than 0.9 as the dataset.
 ### Result
-| Epochs | Loss | BLEU |
-|----|----|----|
-| 10 | 5.883 | 7.3 |
+| Epochs | BLEU |
+|----|----|
+| 20 | 14.4 |
 
 We don't have time to do more for now because the cluster is not always accessible.  
 We'll try to train more epochs later.
