@@ -75,6 +75,7 @@ We use Bicleaner for data cleaning and select only rows with a confidence rate g
 |----|----|----|
 | 20 | 5.553 | 14.4 |
 | 30 | 5.044 | 18.5 |
+| 40 | 4.717 | 20.9 |
 
 We don't have time to do more for now because the cluster is not always accessible.  
 We'll try to train more epochs later.
