@@ -20,7 +20,7 @@ We conducted the training with 50,000 samples and a learning rate of 1e-4, which
 | 7      | 1.3476        | 0.6406         | 0.5640    |
 | 8      | 1.3123        | 0.6104         | 0.5592    |
 
-Since the training approach from the notebook produced fairly good results, we decided not to fine-tune this model further. Others have already explored this extensively (see [here](https://huggingface.co/oliverguhr/wav2vec2-base-german-cv9)), and their work indicates that significant computational resources are required. Given the tight time frame, it was challenging to accommodate additional training.
+Since the training approach from the notebook produced pretty good results, we decided not to fine-tune this model further. Additionally, the Wav2Vec fine-tuning model struggles with punctuation because the original model was trained on data that lacked punctuation. For the fine-tuning of Wav2Vec there are finetuned models out there (see [here](https://huggingface.co/oliverguhr/wav2vec2-base-german-cv9)), and their work indicates that significant computational resources are required. Given the tight time frame, it was challenging to accommodate additional training.
 
 To see some examples here are couple of transcripts of our model (Our) in direct comparison to the one from [HuggingFace](https://huggingface.co/oliverguhr/wav2vec2-base-german-cv9) (HF):
 
