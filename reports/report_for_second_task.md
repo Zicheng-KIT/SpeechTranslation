@@ -1,3 +1,13 @@
+# Report For Second Task
+## Key Aspects
+* dataset information 
+  * Corpus: Commomvoice_de_v19.0
+  * Size: train / dev / test 
+* model architecture: s2t_transformer_s
+* performance on dev
+  * WER score of 14.8% 
+  * over 90% word-level accuracy 
+
 ## Train with s2t_transformer
 
 We use `Commomvoice_de_v19.0` as the dataset. The training set has 600,000 mp3 files, and the validation set and test set have 20,000 each. All target sentences have punctuation marks. The dataset has a small amount of noise interference and has diversity in pronunciation.
@@ -28,6 +38,11 @@ The model performs very well on the validation set, with over 90% word-level acc
 2. Some audio files in the dataset have background sound, such as another person speaking. For example, there is a very simple sentence "Worüber sprechen wir?", and our model predicts "In einem Pfadfinderinneninneninneninneninneninneninneninneninneninneninneninneninnen spielen sie im vierten und auf."
 
 ## Combine ASR and MT models
+* For evaluation of our stacked approach we used the test training set from [covost version 2](https://github.com/facebookresearch/covost)  containing german voice clips and english transcription.
+* It is based on Common Voice 4
+* The size of the test part of the dataset is 13511
+* Pipeline: We first transcribed the german voice clips into german text with our s2t_transformer from the section before. Then we translated the transcription with our model from the first test.
+* We calculated the BLEU score of ___ over 1000 sentences
 
 ## Finetuing Wav2Vec2
 For the finetuning we followed [this](https://huggingface.co/blog/fine-tune-wav2vec2-english) blog article.  Initially, we attempted to fine-tune the Wav2Vec2-XLS-R-1B and Wav2Vec2-XLS-R-300M models. However, both proved too large for our resources, so we opted to fine-tune the Wav2Vec2-base model, which has 90 million parameters.
