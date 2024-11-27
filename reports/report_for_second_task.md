@@ -17,7 +17,7 @@ We use the s2t_transformer model provided by fairseq and follow the steps in the
 ### Result
 After about 35,000 updates, the model achieved really good results：
 
-| Epoche | Training Loss | Evaluation Loss | WER Score |
+| Epoche | Training Loss | Validation Loss | WER Score |
 |--------|--------------|----------------|-----------|
 |   1    |   11.022      |   9.638       |   102.07    |
 |   2    |   8.941       |   8.595       |   107.75    |
