@@ -4,7 +4,7 @@
   * Corpus: Commomvoice_de_v19.0
   * Size: train (740h) / dev (48h) / test (47h) 
 * model architecture: s2t_transformer_s
-* performance on dev
+* performance on testset
   * WER score of 14.8% 
   * over 90% word-level accuracy 
 
