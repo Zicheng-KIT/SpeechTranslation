@@ -41,7 +41,7 @@ Why were the first two results so bad?
 We decided to try a more conversational type of dataset without much contextual references and knowledge based information. We used the Ted Talk 2020 dataset for that. The dataset was cleaned by Bi-cleaner and only sentences with a confidence rate greater than 0.9 were retained.
 ### Result
 - Our results have been much better with this set.
-  - The BLEU score was __ with loss __.
+  - The BLEU score was 37.2. After this, the validation loss starts to fluctuate.
   - The output of the hypothesis closely aligns with the reference upon review.
 
 | Epochs | Loss | BLEU |
@@ -49,8 +49,6 @@ We decided to try a more conversational type of dataset without much contextual 
 | 10 | 4.154 | 34.2 |
 | 20 | 3.944 | 36.9 |
 | 30 | 3.926 | 37.2 |
-| ... | ... | ... |
-| 100 |  |  |
 
 ## Fourth Try using mBART
 Additionally we tried to train a transformer model with mBART. 
