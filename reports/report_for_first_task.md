@@ -42,40 +42,38 @@ We decided to try a more conversational type of dataset without much contextual 
 ### Result
 - Our results have been much better with this set.
   - The BLEU score was 33.4 with loss 3.318.
-  - And Rouge scores:
-    - rouge1: 0.6543
-    - rouge2: 0.4288
-    - rougeL: 0.6332
   - The output of the hypothesis closely aligns with the reference upon review.
 
-## Fourth Try: Train a Model with mBART Architecture
-Additionally we tried to train a transformer model with mBART and the Ted Talk 2020 dataset. Follow https://medium.com/@pablo_rf/fine-tuning-mbart-to-unseen-languages-c2fd55388ac5 for more information. 
-The architecture is based on the transformer architecture. In addition, a technique called denoised training is been used. Instead of directly translating a sentence, the model is trained to recover the correct version from a noisy version. This noisy version is created by introducing changes in the original sentence such as removing some blanks between tokens or changing random letters.
+| Epochs | Loss | BLEU |
+|----|----|----|
+| 10 | 4.154 | 34.2 |
+| 20 | 3.944 | 36.9 |
+| 30 | 3.926 | 37.2 |
+| ... | ... | ... |
+| 100 |  |  |
+
+## Fourth Try using mBART
+Additionally we tried to train a transformer model with mBART. 
+
 ### Trouble: Setting Hyperparameters
 During training, we found that the loss was fluctuating. Even after training for a long time, there are no good results. We set a smaller learning rate and other hyperparameters, and finally we achieved good results.
 ### Result
-There should be further improvement with continued training, but we estimate that the improvement will not be that significant.
+
+- Ted Talk 2020 Dataset
 
 | Epochs | Loss | BLEU |
 |----|----|----|
 | 20 | 5.097 | 20.0 |
 | 30 | 4.755 | 22.7 |
-| 40 | 4.526 | 24.6 |
-| 50 | 4.358 | 26.1 |
-| 60 | 4.226 | 26.5 |
-| 70 | 4.177 | 27.2 |
-| 80 | 4.022 | 27.6 |
+| ... | ... | ... |
 | 90 | 3.939 | 27.8 |
 | 100 | 3.864 | 28.1 |
 
-## Fifth Try: News-Commentary Dataset cleaned by Bicleaner with mBART
-We use Bicleaner for data cleaning and select only rows with a confidence rate greater than 0.9 as the dataset.
-### Result
+- News-Commentary Dataset
+
 | Epochs | Loss | BLEU |
 |----|----|----|
-| 20 | 5.553 | 14.4 |
-| 30 | 5.044 | 18.5 |
-| 40 | 4.717 | 20.9 |
-
-We don't have time to do more for now because the cluster is not always accessible.  
-We'll try to train more epochs later.
+| 10 | 6.588 | 10.5 |
+| 20 | 5.909 | 16.5 |
+| ... | ... | ... |
+| 60 | 5.049 | 25.8 |
