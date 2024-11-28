@@ -38,10 +38,10 @@ Why were the first two results so bad?
   - Try more complex models to see if they can bring surprises.
 
 ## Third Try with Ted Talk 2020 Dataset using plain Transformer
-We decided to try a more conversational type of dataset without much contextual references and knowledge based information. We used the Ted Talk 2020 dataset for that.
+We decided to try a more conversational type of dataset without much contextual references and knowledge based information. We used the Ted Talk 2020 dataset for that. The dataset was cleaned by Bi-cleaner and only sentences with a confidence rate greater than 0.9 were retained.
 ### Result
 - Our results have been much better with this set.
-  - The BLEU score was 33.4 with loss 3.318.
+  - The BLEU score was __ with loss __.
   - The output of the hypothesis closely aligns with the reference upon review.
 
 | Epochs | Loss | BLEU |
