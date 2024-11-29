@@ -42,7 +42,7 @@ The model performs very well on the validation set, with over 90% word-level acc
 * It is based on Common Voice 4.
 * The size of the test part of the dataset is 13511 lines.
 * Pipeline: We first transcribed the german voice clips into german text with our s2t_transformer from the section above. Then we translated the transcription with our MT model from the first task.
-* We calculated the BLEU score of 6.623 over 1000 sentences.
+* We calculated the BLEU score of 18.304 over 1000 sentences.
 
 ## Finetuing Wav2Vec2
 For the finetuning we followed [this](https://huggingface.co/blog/fine-tune-wav2vec2-english) blog article.  Initially, we attempted to fine-tune the Wav2Vec2-XLS-R-1B and Wav2Vec2-XLS-R-300M models. However, both proved too large for our resources, so we opted to fine-tune the Wav2Vec2-base model, which has 90 million parameters.
