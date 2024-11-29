@@ -43,7 +43,14 @@ The model performs very well on the validation set, with over 90% word-level acc
 * The size of the test part of the dataset is 13511 lines.
 * Pipeline: We first transcribed the german voice clips into german text with our s2t_transformer from the section above. Then we translated the transcription with our MT model from the first task.
 * We calculated the BLEU score of 18.304 over 1000 sentences.
-
+  
+| Our Translation                     |  Reference Translation |
+|------------------------------------------|--------------------------------------|
+| Downy is known for his respectless humor.| Downey is known for his disrespectfully sharp humor.      |
+| The point is marked by a smoke signal. | The dropping point is marked with a smoke signal.|
+| Majuro is the capital of the Marshall Islands.| Majuro is the capital of Marshall Islands.|
+| On stage, among the authors themselves, also Aquile Sandrock. | Besides the author himself, Adele Sandrock was also standing on the stage. |
+| The European community then escaped Roy Jenkins's president of the European Commission to the summit. | The European community sent Roy Jenkins, the former president of the European Commission, to the summit. |
 ## Finetuing Wav2Vec2
 For the finetuning we followed [this](https://huggingface.co/blog/fine-tune-wav2vec2-english) blog article.  Initially, we attempted to fine-tune the Wav2Vec2-XLS-R-1B and Wav2Vec2-XLS-R-300M models. However, both proved too large for our resources, so we opted to fine-tune the Wav2Vec2-base model, which has 90 million parameters.
 
