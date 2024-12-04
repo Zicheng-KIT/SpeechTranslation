@@ -8,9 +8,9 @@
 
 | Filtering Criteria              | Number of Samples | BLEU Score        |
 |---------------------------------|-------------------|-------------------|
-| Unfiltered                      | 2003              | 17.64            |
-| No Chinese                      | 1492              | 22.47            |
-| No Chinese & <= 75 chars        | 1069              | 25.71            |
+| Unfiltered                      | 3001              | 18.33            |
+| No Chinese                      | 2199              | 24.34            |
+| No Chinese & <= 75 chars        | 1546              | 27.08            |
 
 ## Fine-Tuning SALMONN For German to English Speech Translation
 - #TODO
