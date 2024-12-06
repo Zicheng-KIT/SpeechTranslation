@@ -1,7 +1,4 @@
 # Report For Third Task
-## Key Aspects
-- #TODO
-
 
 ## Without Fine-Tuning SALMONN
 ### Results
@@ -14,3 +11,6 @@
 
 ## Fine-Tuning SALMONN For German to English Speech Translation
 - #TODO
+
+## Comparison
+#TODO
