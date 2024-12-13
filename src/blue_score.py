@@ -1,10 +1,10 @@
 import sacrebleu
 
 # Load the hypothesis and reference files
-with open('/home/roger/Studium/PraktikumSprachübersetzung/SpeechTranslation/datasets/SpeechTranslation/de/translation.txt', 'r') as f:
+with open('../SpeechTranslation/de/translation.txt', 'r') as f:
     hypothesis = f.readlines()
 
-with open('/home/roger/Studium/PraktikumSprachübersetzung/SpeechTranslation/datasets/SpeechTranslation/de/ref.txt', 'r') as f:
+with open('../SpeechTranslation/de/ref.txt', 'r') as f:
     reference = f.readlines()
 
 # Calculate BLEU score
