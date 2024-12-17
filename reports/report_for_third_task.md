@@ -2,7 +2,7 @@
 
 ## Without Fine-Tuning SALMONN
 ### Results
-- We observed that the model seems to have a tendency to output religious speech if the input contains just a very short sequence of background voice besides the intended speech. In that case the model interprets the short sequence of speech in the background and generates a long transcription from it. #TODO
+- We observed that the model seems to have a tendency to output religious speech if the input contains just a very short sequence of background voice besides the intended speech. In that case the model interprets the short sequence of speech in the background and generates a long transcription from it.
   - See the third example in the subsection Example Output.
 - Also the output contained german and chinese sentences. The transcription/translation was in good quality, but not in english. 
 
@@ -51,7 +51,7 @@
 
 | Filtering Criteria              |  Number of Samples | BLEU Score       |
 |---------------------------------|-------------------|-------------------|
-| Without finetuning               | 3100              | 18.33             |
-| After finetuning               | 3100                | 29.46             |
+| Without finetuning               | 3001              | 18.33             |
+| After finetuning               | 9300                | 30.34             |
 
 **Number of Samples** we used for calculating the BLEU Score.
