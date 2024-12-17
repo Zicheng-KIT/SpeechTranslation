@@ -11,8 +11,8 @@ ASR_CHECKPOINT_PATH="/checkpoints/"
 ASR_CHECKPOINT_NAME="#TODOS2_checkpoint_best.pt"
 
 MT_CHECKPOINT_PATH="/checkpoints/"
-MT_CHECKPOINT_NAME="/home/roger/Studium/PraktikumSprachübersetzung/SpeechTranslation/fairseq/examples/translation/checkpoints/checkpoint_best.pt"
-MT_META_FILE_FOLDER="/home/roger/Studium/PraktikumSprachübersetzung/SpeechTranslation/fairseq/examples/translation"
+MT_CHECKPOINT_NAME="/home/roger/Studium/PraktikumSprachübersetzung/trainedModels/S1/S1_checkpoint_best.pt"
+MT_META_FILE_FOLDER="/home/roger/Studium/PraktikumSprachübersetzung/trainedModels/S1/"
 #TODO
 #TEST_INPUT="/content/fairseq/examples/translation/sample_data/spm.tst.de-en.de"
 #PRED_LOG="/content/fairseq/examples/translation/de-en.decode.log"
@@ -51,9 +51,9 @@ def main():
     translation_model = TransformerModel.from_pretrained(
         MT_META_FILE_FOLDER,
         checkpoint_file=MT_CHECKPOINT_NAME,
-        data_name_or_path=MT_META_FILE_FOLDER + '/data-bin/iwslt14.de-en',
+        data_name_or_path=MT_META_FILE_FOLDER + 'data-bin/iwslt14.de-en',
         bpe='sentencepiece',  # or 'fastbpe' or 'sentencepiece' depending on the BPE used
-        sentencepiece_model=MT_META_FILE_FOLDER+ '/bpe.model',
+        sentencepiece_model=MT_META_FILE_FOLDER+ 'bpe.model',
         tokenizer='moses',  # or use 'space' or other tokenizers if needed
         src_lang='de',
         tgt_lang='en'
