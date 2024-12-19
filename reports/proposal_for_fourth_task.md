@@ -21,7 +21,6 @@ To evaluate the robustness of our German-to-English speech translation model we 
 4. **Sentence Length (Character Level)**:  
    - Variations in sentence length can challenge the model’s ability to handle short and long sentences effectively.
    - By analyzing the distribution of sentence lengths, we can identify any biases or weaknesses related to sentence complexity or brevity.
-   - The chart below illustrates the sentence length distribution in the dataset, showing how the majority of sentences cluster around specific lengths, with a fitted normal distribution curve for better visualization.
 
 5. **Out of Domain (Europarl)**
    - To assess the model’s ability to generalize and handle domain shifts effectively.
