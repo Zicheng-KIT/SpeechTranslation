@@ -26,7 +26,7 @@ To evaluate the robustness of our German-to-English speech translation model we 
 - **Insight into Biases**: Attribute-based testing helps identify potential biases (e.g., favoring male voices or standard German accent), guiding improvements in training data and model architecture.
 - **Fairness and Inclusivity**: Evaluating performance across demographic and linguistic attributes promotes inclusivity by ensuring equitable performance for all user groups.
 
-#### Male:
+#### Male Distribution:
 | age       |   germany |   austria |   switzerland |
 |:----------|----------:|----------:|--------------:|
 | fifties   |     28667 |       746 |          2898 |
@@ -37,7 +37,7 @@ To evaluate the robustness of our German-to-English speech translation model we 
 | thirties  |     51671 |      2705 |           396 |
 | twenties  |     71188 |      2023 |           684 |
 
-#### Female:
+#### Female Distribution:
 | age       |   germany |   austria |   switzerland |
 |:----------|----------:|----------:|--------------:|
 | eighties  |         4 |         0 |             0 |
