@@ -1,6 +1,6 @@
 # Attack Plan
 
-To evaluate the robustness of our German-to-English speech translation model we design adversarial attacks based on selected attributes from the CommonVoice dataset. These attributes include demographic (gender and age), linguistic (accent) factors, and sentence length.
+To evaluate the robustness of our German-to-English speech translation model we design adversarial attacks based on selected attributes from the CommonVoice and Europarl dataset. These attributes include demographic (gender and age), linguistic (accent) factors, and sentence length. Additionaly we want to attack it with out of domain data and background noice.
 
 ---
 
@@ -23,13 +23,13 @@ To evaluate the robustness of our German-to-English speech translation model we 
    - By analyzing the distribution of sentence lengths, we can identify any biases or weaknesses related to sentence complexity or brevity.
    - The chart below illustrates the sentence length distribution in the dataset, showing how the majority of sentences cluster around specific lengths, with a fitted normal distribution curve for better visualization.
 
----
+5. **Out of Domain (Europarl)**
+   - To assess the model’s ability to generalize and handle domain shifts effectively.
+	- Europarl’s formal, structured text contrasts with conversational and casual styles typical of CommonVoice data.
 
-**Benefits of Attribute-Based Adversarial Testing**:
-
-- **Real-World Applicability**: Testing the model with realistic variations ensures robustness in real-world applications, where users have diverse accents, genders, ages, and sentence complexities.
-- **Insight into Biases**: Attribute-based testing helps identify potential biases (e.g., favoring short sentences or standard German accent), guiding improvements in training data and model architecture.
-- **Fairness and Inclusivity**: Evaluating performance across demographic, linguistic, and structural attributes promotes inclusivity by ensuring equitable performance for all user groups.
+6. **Background Noice (Qualitative Assessment)**
+   - As we discovered during inference our model tends to catch up on background noice.
+   - We do not have a dataset to check this but want to do a qualititve analysis for this.
 
 #### Male Distribution:
 | age       |   germany |   austria |   switzerland |
