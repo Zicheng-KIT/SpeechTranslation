@@ -1,6 +1,6 @@
 # Attack Plan
 
-To evaluate the robustness of our German-to-English speech translation model we design adversarial attacks based on selected attributes from the CommonVoice dataset. These attributes include demographic (gender and age) and linguistic (accent) factors.
+To evaluate the robustness of our German-to-English speech translation model we design adversarial attacks based on selected attributes from the CommonVoice dataset. These attributes include demographic (gender and age), linguistic (accent) factors, and sentence length.
 
 ---
 
@@ -18,13 +18,18 @@ To evaluate the robustness of our German-to-English speech translation model we 
    - Age influences vocal tone and articulation, introducing variability that could affect model performance.
    - The dataset contains diverse age groups, allowing us to test whether the model performs consistently across speakers with age-related variations in speech.
 
+4. **Sentence Length (Character Level)**:  
+   - Variations in sentence length can challenge the model’s ability to handle short and long sentences effectively.
+   - By analyzing the distribution of sentence lengths, we can identify any biases or weaknesses related to sentence complexity or brevity.
+   - The chart below illustrates the sentence length distribution in the dataset, showing how the majority of sentences cluster around specific lengths, with a fitted normal distribution curve for better visualization.
+
 ---
 
 **Benefits of Attribute-Based Adversarial Testing**:
 
-- **Real-World Applicability**: Testing the model with realistic variations ensures robustness in real-world applications, where users have diverse accents, genders, and ages.
-- **Insight into Biases**: Attribute-based testing helps identify potential biases (e.g., favoring male voices or standard German accent), guiding improvements in training data and model architecture.
-- **Fairness and Inclusivity**: Evaluating performance across demographic and linguistic attributes promotes inclusivity by ensuring equitable performance for all user groups.
+- **Real-World Applicability**: Testing the model with realistic variations ensures robustness in real-world applications, where users have diverse accents, genders, ages, and sentence complexities.
+- **Insight into Biases**: Attribute-based testing helps identify potential biases (e.g., favoring short sentences or standard German accent), guiding improvements in training data and model architecture.
+- **Fairness and Inclusivity**: Evaluating performance across demographic, linguistic, and structural attributes promotes inclusivity by ensuring equitable performance for all user groups.
 
 #### Male Distribution:
 | age       |   germany |   austria |   switzerland |
@@ -48,3 +53,6 @@ To evaluate the robustness of our German-to-English speech translation model we 
 | teens     |       147 |        22 |             4 |
 | thirties  |      2610 |       352 |             0 |
 | twenties  |      5962 |        30 |             5 |
+
+#### Sentence Length Distribution:
+![Sentence Length Distribution](sentence_length_distribution.png)
