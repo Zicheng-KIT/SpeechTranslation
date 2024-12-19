@@ -53,5 +53,5 @@ To evaluate the robustness of our German-to-English speech translation model we 
 | thirties  |      2610 |       352 |             0 |
 | twenties  |      5962 |        30 |             5 |
 
-#### Sentence Length Distribution:
+#### Sentence Length Distribution of Commonvoice Dataset:
 ![Sentence Length Distribution](sentence_length_distribution.png)
