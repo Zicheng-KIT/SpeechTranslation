@@ -52,6 +52,11 @@
 | 140–150          | 32.17      | 4       |
 | 150–160          | 3.70       | 1       |
 
+
+#### BLEU Score for Very Long Sentences
+
+BLEU score: 3.2761658879360285
+
 ### Cascaded model
 
 ## Out of domain attack
