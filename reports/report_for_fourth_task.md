@@ -47,7 +47,7 @@ We want to test the model's ability to handle very long sentences. Ten sentences
 
 | Salmonn after Fine-tuning| Cascaded Model |Samples |
 |--------------------------|----------------|--------|
-| 3.2761658879360285       |                | 1352   |
+| 3.276                    |                | 1352   |
 
 As can be seen, the model performs very poorly on long sentences. When we look at the output of the model, a notable feature is that the length of hyp is much shorter than the length of ref. Moreover, hyp is not a summary or abbreviation of ref. It looks like the model only remembers a very small amount of information and then puts it together incorrectly. 
 
@@ -56,3 +56,14 @@ We also examined whether the poor performance was due to the lack of meaningful 
 
 ## Background Noise
 
+Additionally, we wanted to qualitatively test how well the model handles noise.
+
+|  Input  | Description | Output of raw Salmonn | Output of Salmonn after FT | Output of Cascaded Model |
+|---------|-------------|-------------|------------------|----------------|
+| audio-1 | Short, fuzzy vocals. | It's fun. | He says yes. ||
+| audio-2 | The sound of TV in the Background. | (Correctly identified the human voice on TV.) | (Correctly identified the human voice on TV.) ||
+| audio-3 | Someone says "It's ok." with the sound of TV in the Background. | He is okay. | He is okay. ||
+| audio-4 | Friction Sound. | Sorry, it cannot be recognized. | Someone is writing with a pen on a ruler. ||
+| audio-5 | Keyboard typing Sound. | Sorry, it cannot be recognized. | Typing. ||
+| audio-6 | Rain Sound. | Sorry, it cannot be recognized. | Listen to this German speech and translate it into English. (Output the prompt.) ||
+| audio-7 | This is the audio we mentioned last time, the model hallucinating. | (Something About Religion.) | Travel well! ||
