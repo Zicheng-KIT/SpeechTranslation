@@ -34,6 +34,8 @@ Cascaded model (transformer(MT) + s2t_transformer(ASR)): 18.304 BLEU score
 | Sixties     | 34.757                    | 19.365         | 49      |
 | Seventies   | 28.753                    | 20.909         | 42      |
 
+The BLEU scores across gender, accent, and age groups demonstrate that both the Salmonn end-to-end model and the cascaded speech translation model maintain relatively consistent performance without significant variations. This indicates that neither model shows any apparent bias against specific demographics or linguistic features, supporting their fairness and robustness in diverse scenarios.
+
 
 ## Attack on Input Length (Covost Dataset)
 
