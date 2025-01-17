@@ -11,28 +11,28 @@ Cascaded model (transformer(MT) + s2t_transformer(ASR)): 18.304 BLEU score
 ## Bias Attack (Covost Dataset)
 
 #### BLEU Scores by Gender
-| Gender  | Salmonn after Fine-tuning | Cascaded Model |Samples |
-|---------|---------------------------|----------------|--------|
-| Male    | 31.257       |                | 1014   |
-| Female  | 31.702       |                | 136    |
+| Gender  | Salmonn after Fine-tuning | Cascaded Model | Minimum Samples |
+|---------|---------------------------|----------------|---------|
+| Male    | 31.257                    | 20.355         | 1014    |
+| Female  | 31.702                    | 20.095         | 136     |
 
 #### BLEU Scores by Accent
-| Accent       | Salmonn after Fine-tuning | Cascaded Model | Samples |
+| Accent       | Salmonn after Fine-tuning | Cascaded Model | Minimum Samples |
 |--------------|---------------------------|----------------|---------|
-| Germany      | 31.124      |                | 677     |
-| Austria      | 36.686      |                | 70      |
-| Switzerland  | 26.189      |                | 56      |
+| Germany      | 31.124                    | 20.981         | 677     |
+| Austria      | 36.686                    | 23.943         | 70      |
+| Switzerland  | 26.189                    | 21.240         | 56      |
 
 #### BLEU Scores by Age
-| Age Group   | Salmonn after Fine-tuning | Cascaded Model | Samples  |
-|-------------|---------------------------|----------------|----------|
-| Teens       | 29.242    |                | 162      |
-| Twenties    | 28.918    |                | 335      |
-| Thirties    | 32.542    |                | 247      |
-| Forties     | No data available |        | N/A      |
-| Fifties     | 33.334    |                | 175      |
-| Sixties     | 34.757    |                | 49       |
-| Seventies   | 28.753    |                | 42       |
+| Age Group   | Salmonn after Fine-tuning | Cascaded Model | Minimum Samples |
+|-------------|---------------------------|----------------|---------|
+| Teens       | 29.242                    | 22.056         | 162     |
+| Twenties    | 28.918                    | 18.386         | 335     |
+| Thirties    | 32.542                    | 20.810         | 247     |
+| Forties     | No data available         | No data available | N/A   |
+| Fifties     | 33.334                    | 22.557         | 175     |
+| Sixties     | 34.757                    | 19.365         | 49      |
+| Seventies   | 28.753                    | 20.909         | 42      |
 
 
 ## Attack on Input Length (Covost Dataset)
