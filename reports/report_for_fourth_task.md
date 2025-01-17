@@ -54,16 +54,18 @@ As can be seen, the model performs very poorly on long sentences. When we look a
 We also examined whether the poor performance was due to the lack of meaningful connections between the 10 sentences. However, even when using complete paragraphs from the Europarl dataset, the model continued to produce very short and unmeaningful sentences.
 
 
-## Background Noise
+## Evaluating Model Robustness to Noise
 
 Additionally, we wanted to qualitatively test how well the model handles noise.
 
 |  Input  | Description | Output of raw Salmonn | Output of Salmonn after FT | Output of Cascaded Model |
-|---------|-------------|-------------|------------------|----------------|
+|---------|-------------|-----------------------|----------------------------|--------------------------|
 | audio-1 | Short, fuzzy vocals. | It's fun. | He says yes. ||
 | audio-2 | The sound of TV in the Background. | (Correctly identified the human voice on TV.) | (Correctly identified the human voice on TV.) ||
-| audio-3 | Someone says "It's ok." with the sound of TV in the Background. | He is okay. | He is okay. ||
-| audio-4 | Friction Sound. | Sorry, it cannot be recognized. | Someone is writing with a pen on a ruler. ||
-| audio-5 | Keyboard typing Sound. | Sorry, it cannot be recognized. | Typing. ||
-| audio-6 | Rain Sound. | Sorry, it cannot be recognized. | Listen to this German speech and translate it into English. (Output the prompt.) ||
-| audio-7 | This is the audio we mentioned last time, the model hallucinating. | (Something About Religion.) | Travel well! ||
+| audio-3 | Someone says "It's ok." with the sound of TV in the Background. | He is okay. (Ignore TV sound) | He is okay.  (Ignore TV sound) ||
+| audio-4 | Friction Sound. | Sorry, audio cannot be recognized. (Because there is no voice) | Someone is writing with a pen on a ruler. (The model identifies the friction sound.) ||
+| audio-5 | Keyboard typing Sound. | Sorry, audio cannot be recognized. (Because there is no voice) | Typing. (Nice recognition) ||
+| audio-6 | Rain Sound. | Sorry, audio cannot be recognized. (Because there is no voice) | Listen to this German speech and translate it into English. (Output the prompt) ||
+| audio-7 | This is the audio we mentioned in 3rd part, the model hallucinating. | Hallucination. (Very long paragraph about Religion) | Travel well! (Try to recognize the little bit of human voice)||
+
+It can be seen from the results that raw salmonn will give an "unrecognized" output when the human voice cannot be recognized, and hallucinations might occur when processing individual unvoiced audio. After fine-tuning, salmonn seems to have no hallucinations on the same input. Surprisingly, but inexplicably, salmonn can recognize sounds such as friction sound and typing sound after fine-tuning. We speculate that the model has a certain ability to perceive environmental sounds because of the contribution of the encoder (Whisper / BEATs).
