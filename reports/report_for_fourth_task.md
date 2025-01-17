@@ -2,7 +2,10 @@
 
 ## Performance of both Speech Translation Models
 
-...
+Salmonn after Fine-tuning: 30.34 BLEU score
+Cascaded model (transformer(MT) + s2t_transformer(ASR)): 18.304 BLEU score
+
+## Results of Attacks
 
 ## Bias Attack (Covost Dataset)
 
@@ -38,9 +41,5 @@
 |--------------------------|----------------|--------|
 | 3.2761658879360285       |                | 1352   |
 
-BLEU score: 3.2761658879360285
 
 ## Background Noise
-
-
-## Results
