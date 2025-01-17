@@ -37,7 +37,7 @@ Cascaded model (transformer(MT) + s2t_transformer(ASR)): 18.304 BLEU score
 
 ## Attack on Input Length (Covost Dataset)
 
-We want to test the model's ability to handle very long sentences without out-of-domain. Ten sentences were randomly selected from the covost test set and concatenated together, and the corresponding audio files were also concatenated. Blanks were added between the audio files so that there is no overlap between the audios.
+We want to test the model's ability to handle very long sentences. Ten sentences were randomly selected from the covost test set and concatenated together, and the corresponding audio files were also concatenated. Blanks were added between the audio files so that there is no overlap between the audios.
 
 #### BLEU Score for Very Long Sentences
 
@@ -45,7 +45,9 @@ We want to test the model's ability to handle very long sentences without out-of
 |--------------------------|----------------|--------|
 | 3.2761658879360285       |                | 1352   |
 
-As can be seen, the model performs very poorly on long sentences. When we look at the output of the model, a notable feature is that the length of hyp is much shorter than the length of ref. Moreover, hyp is not a summary or abbreviation of ref. It looks like the model only remembers a very small amount of information and then puts it together incorrectly. Considering that our sentences are randomly selected, we use the entire meaningful passage, but the model still gets the wrong result.
+As can be seen, the model performs very poorly on long sentences. When we look at the output of the model, a notable feature is that the length of hyp is much shorter than the length of ref. Moreover, hyp is not a summary or abbreviation of ref. It looks like the model only remembers a very small amount of information and then puts it together incorrectly. 
+
+We also examined whether the poor performance was due to the lack of meaningful connections between the 10 sentences. However, even when using complete paragraphs from the Europarl dataset, the model continued to produce very short and unmeaningful sentences.
 
 
 ## Background Noise
