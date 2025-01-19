@@ -20,16 +20,16 @@ from torchaudio.datasets import COMMONVOICE
 # my_torch_version == 2.1.0 and my_torchaudio_version == 2.1.0
 
 
-ROOT_DIR = Path("../PraktikumSprachübersetzung/SpeechTranslation/datasets/SpeechTranslation/de/")
-test_data = COMMONVOICE(ROOT_DIR, tsv="test.tsv") # len = 16188
+ROOT_DIR = Path("../datasets/SpeechTranslation/de/")
+test_data = COMMONVOICE(ROOT_DIR, tsv="filtered_test_modified_client_id.tsv") # len = 16188
 
 ASR_INPUT_DEFAULT=""
-ASR_ROOT_PATH="../PraktikumSprachübersetzung/trainedModels/S2/"
-ASR_CHECKPOINT_PATH="../PraktikumSprachübersetzung/trainedModels/S2/S2_checkpoint_best.pt"
-ASR_OUTPUT_PATH="../PraktikumSprachübersetzung/SpeechTranslation/datasets/SpeechTranslation/de/"
-MT_ROOT_PATH="../PraktikumSprachübersetzung/trainedModels/S1/"
-MT_CHECKPOINT_NAME="../PraktikumSprachübersetzung/trainedModels/S1/S1_checkpoint_best.pt"
-MT_OUTPUT_PATH="../PraktikumSprachübersetzung/SpeechTranslation/datasets/SpeechTranslation/de/"
+ASR_ROOT_PATH="../../trainedModels/S2"
+ASR_CHECKPOINT_PATH="../../trainedModels/S2/S2_checkpoint_best.pt"
+ASR_OUTPUT_PATH="..//datasets/SpeechTranslation/de/"
+MT_ROOT_PATH="../../trainedModels/S1/"
+MT_CHECKPOINT_NAME="../../trainedModels/S1/S1_checkpoint_best.pt"
+MT_OUTPUT_PATH="../datasets/SpeechTranslation/de/"
 
 #TODO
 #TEST_INPUT="/content/fairseq/examples/translation/sample_data/spm.tst.de-en.de"
@@ -67,7 +67,7 @@ def preprocess_audio_files():
         audio_paths, audio_lengths = pickle.load(file)
 
     MANIFEST_COLUMNS = ["id", "audio", "n_frames", "tgt_text", "speaker"]
-    # for dataset, split_name in zip([train_data, dev_data, test_data],["train-clean", "dev-clean", "test-clean"]):
+    #for dataset, split_name in zip([train_data, dev_data, test_data],["train-clean", "dev-clean", "test-clean"]):
     for dataset, split_name in zip([test_data], ["test-clean"]):
         print(f"Fetching manifest from {split_name}...")
         manifest = {c: [] for c in MANIFEST_COLUMNS}
@@ -90,28 +90,31 @@ def preprocess_audio_files():
 
 def run_fairseq_transcription():
     # Construct the Fairseq generate command for transcription or translation
+
+
+
     command = [
         "fairseq-generate",
-        "../PraktikumSprachübersetzung/SpeechTranslation/datasets/SpeechTranslation/de/", # Path to the data directory (source or transcriptions)
+        "../../SpeechTranslation/datasets/SpeechTranslation/de/", # Path to the data directory (source or transcriptions)
         "--task", "speech_to_text",
         "--arch", "s2t_transformer_s",
-        "--strict", "False",
-        "--config-yaml",
-        ASR_ROOT_PATH+ "/config.yaml",
-        "--path",
-        ASR_CHECKPOINT_PATH , # Path to the model checkpoint
+        "--config-yaml", "../../SpeechTranslation/datasets/SpeechTranslation/de/config.yaml",
+        "--path", "../../SpeechTranslation/datasets/SpeechTranslation/de/S2_checkpoint_best.pt",# Path to the model checkpoint
         "--gen-subset", "test-clean",  # Subset to generate (e.g., test set)
-        "--beam", "1",  # Beam size for beam search (higher = better)
+        "--remove-bpe",
+        "--bpe", "sentencepiece",
+        #"--temperature", "1.0",
+        "--batch-size", "1",
+        "--beam", "5",  # Beam size for beam search (higher = better)
         "--max-tokens", "50000",  # Maximum number of tokens per batch
         "--cpu",  # Run on CPU (use --cuda for GPU if available)
         "--scoring", "wer",
         "--results-path",
         ASR_OUTPUT_PATH,
     ]
-
     # Run the command and capture the output
     result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-
+    print(result.stdout)
     if result.returncode == 0:
         print("Generation completed successfully.")
         return result.stdout
@@ -121,8 +124,8 @@ def run_fairseq_transcription():
         return None
 
 def extract_hyp():
-    # Define the paths to your log and output directories
-    pred_log = ASR_OUTPUT_PATH + 'generate-test-clean.txt'
+    # Define the paths to log and output directories
+    pred_log = ASR_OUTPUT_PATH + '/generate-test-clean.txt'
     pred_output_dir = ASR_OUTPUT_PATH  # Replace with your output directory
 
     # Ensure the output directory exists
@@ -205,12 +208,16 @@ def translate(model, source_file, output_file):
 
 def main():
     # Command-line arguments parsing
-    preprocess_audio_files()
-    run_fairseq_transcription()
-    extract_hyp()
-    pred_log = ASR_OUTPUT_PATH + 'generate-test-clean.txt'
-    hyp_file = os.path.join(ASR_OUTPUT_PATH, 'hyp.txt')
-    extract_and_sort_hypothesis(pred_log, hyp_file)
+    #preprocess_audio_files()
+    #return
+    #run_fairseq_transcription()
+    #return
+
+    #extract_hyp()
+    #pred_log = ASR_OUTPUT_PATH + '/generate-test-clean.txt'
+    #hyp_file = os.path.join(ASR_OUTPUT_PATH, 'hyp.txt')
+    #extract_and_sort_hypothesis(pred_log, hyp_file)
+
     # Load the model
     translation_model = TransformerModel.from_pretrained(
         MT_ROOT_PATH,
