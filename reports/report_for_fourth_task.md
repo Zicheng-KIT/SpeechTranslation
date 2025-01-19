@@ -43,16 +43,20 @@ The BLEU scores across gender, accent, and age groups demonstrate that both the 
 
 We want to test the model's ability to handle very long sentences. Ten sentences were randomly selected from the covost test set and concatenated together, and the corresponding audio files were also concatenated. Blanks were added between the audio files so that there is no overlap between the audios.
 
-#### BLEU Score for Very Long Sentences
+### BLEU Score for Very Long Sentences
 
 | Salmonn after Fine-tuning| Cascaded Model |Samples |
 |--------------------------|----------------|--------|
 | 3.276                    |                | 1352   |
 
+#### Salmonn after Fine-tunin
+
 As can be seen, the model performs very poorly on long sentences. When we look at the output of the model, a notable feature is that the length of hyp is much shorter than the length of ref. Moreover, hyp is not a summary or abbreviation of ref. It looks like the model only remembers a very small amount of information and then puts it together incorrectly. 
 
 We also examined whether the poor performance was due to the lack of meaningful connections between the 10 sentences. However, even when using complete paragraphs from the Europarl dataset, the model continued to produce very short and unmeaningful sentences.
 
+#### Cascaded Model
+ TODO
 
 ## Evaluating Model Robustness to Noise
 
