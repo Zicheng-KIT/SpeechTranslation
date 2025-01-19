@@ -49,7 +49,7 @@ We want to test the model's ability to handle very long sentences. Ten sentences
 |--------------------------|----------------|--------|
 | 3.276                    |                | 1352   |
 
-#### Salmonn after Fine-tunin
+#### Salmonn after Fine-tuning
 
 As can be seen, the model performs very poorly on long sentences. When we look at the output of the model, a notable feature is that the length of hyp is much shorter than the length of ref. Moreover, hyp is not a summary or abbreviation of ref. It looks like the model only remembers a very small amount of information and then puts it together incorrectly. 
 
