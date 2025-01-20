@@ -65,12 +65,12 @@ Additionally, we wanted to qualitatively test how well the model handles noise.
 
 |  Input  | Description | Output of raw Salmonn | Output of Salmonn after FT | Output of Cascaded Model |
 |---------|-------------|-----------------------|----------------------------|--------------------------|
-| audio-1 | Short, fuzzy vocals. | It's fun. | He says yes. ||
-| audio-2 | The sound of TV in the Background. | (Correctly identified the human voice on TV.) | (Correctly identified the human voice on TV.) ||
-| audio-3 | Someone says "It's ok." with the sound of TV in the Background. | He is okay. (Ignore TV sound) | He is okay.  (Ignore TV sound) ||
-| audio-4 | Friction Sound. | Sorry, audio cannot be recognized. (Because there is no voice) | Someone is writing with a pen on a ruler. (The model identifies the friction sound.) ||
-| audio-5 | Keyboard typing Sound. | Sorry, audio cannot be recognized. (Because there is no voice) | Typing. (Nice recognition) ||
-| audio-6 | Rain Sound. | Sorry, audio cannot be recognized. (Because there is no voice) | Listen to this German speech and translate it into English. (Output the prompt) ||
-| audio-7 | This is the audio we mentioned in 3rd part, the model hallucinating. | Hallucination. (Very long paragraph about Religion) | Travel well! (Try to recognize the little bit of human voice)||
+| audio-1 | Short, fuzzy vocals. | It's fun. | He says yes. |Welch pregnant.|
+| audio-2 | The sound of TV in the Background. | (Correctly identified the human voice on TV.) | (Correctly identified the human voice on TV.) |The Fass was both advantage in Germany when I think it means that most of them are aucuate, and they are now not total goods.|
+| audio-3 | Someone says "It's ok." with the sound of TV in the Background. | He is okay. (Ignore TV sound) | He is okay.  (Ignore TV sound) |It's almost entirely interesting that you're there, especially partly, you can actually buy to a special or common parallel ^-Jeopardy Cyncensich.|
+| audio-4 | Friction Sound. | Sorry, audio cannot be recognized. (Because there is no voice) | Someone is writing with a pen on a ruler. (The model identifies the friction sound.) |The Foundation Foundation Foundation Foundation Foundation Foundation Foundations Institutes and studied at the University of Frankfurt.|
+| audio-5 | Keyboard typing Sound. | Sorry, audio cannot be recognized. (Because there is no voice) | Typing. (Nice recognition) |The debate is a problem of developing countries.|
+| audio-6 | Rain Sound. | Sorry, audio cannot be recognized. (Because there is no voice) | Listen to this German speech and translate it into English. (Output the prompt) |He was taken off, and he was also working as a real estate adhesive.|
+| audio-7 | This is the audio we mentioned in 3rd part, the model hallucinating. | Hallucination. (Very long paragraph about Religion) | Travel well! (Try to recognize the little bit of human voice)|That's a good exercise.|
 
 It can be seen from the results that raw salmonn will give an "unrecognized" output when the human voice cannot be recognized, and hallucinations might occur when processing individual unvoiced audio. After fine-tuning, salmonn seems to have no hallucinations on the same input. Surprisingly, but inexplicably, salmonn can recognize sounds such as friction sound and typing sound after fine-tuning. We speculate that the model has a certain ability to perceive environmental sounds because of the contribution of the encoder (Whisper / BEATs).
