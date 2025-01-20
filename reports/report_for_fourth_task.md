@@ -11,7 +11,7 @@ Cascaded model (transformer(MT) + s2t_transformer(ASR)): 18.304 BLEU score
 ## Overview over Attacks and Results
 All our attacks we did on both of our models likewise.
 
-First we did a bias attack. We used the covost dataset for that, which we trained and finetuned our models in the previous tasks. We used the available metrics like age, gender and accent, and calculated the corresponding BLEU Scores. Both models performed well for all the different metrics.
+First we did a bias attack. We used the covost dataset for that, which we also trained and finetuned our models in the previous tasks. We used the available metrics like age, gender and accent, and calculated the corresponding BLEU Scores. Both models performed well for all the different metrics.
 
 In our second attack we increased the sentence length by appending several sentences of the covost dataset together and build a new test dataset out of them. Both models performed very badly. For both models, the hypotheses is much shorted (regular sentence length) then the reference. The cascaded model shows repetitive output unrelated to the input data while the finetuned salmon only remembers very little of the input information and therefore the output sometimes seems to be related with the input but still makes no sense.
 
