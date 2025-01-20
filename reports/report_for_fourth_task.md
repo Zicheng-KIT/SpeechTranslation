@@ -47,7 +47,7 @@ We want to test the model's ability to handle very long sentences. Ten sentences
 
 | Salmonn after Fine-tuning| Cascaded Model |Samples |
 |--------------------------|----------------|--------|
-| 3.276                    |                | 1352   |
+| 3.276                    |       0.0105   | 1352   |
 
 #### Salmonn after Fine-tuning
 
@@ -56,7 +56,8 @@ As can be seen, the model performs very poorly on long sentences. When we look a
 We also examined whether the poor performance was due to the lack of meaningful connections between the 10 sentences. However, even when using complete paragraphs from the Europarl dataset, the model continued to produce very short and unmeaningful sentences.
 
 #### Cascaded Model
- TODO
+
+The cascaded model is performing even worse. The output is very repetitive and unrelated to the input data.
 
 ## Evaluating Model Robustness to Noise
 
