@@ -8,7 +8,14 @@ Salmonn after Fine-tuning: 30.34 BLEU score
 
 Cascaded model (transformer(MT) + s2t_transformer(ASR)): 18.304 BLEU score
 
-## Results of Attacks
+## Overview over Attacks and Results
+All our attacks we did on both of our models likewise.
+
+First we did a bias attack. We used the covost dataset for that, which we trained and finetuned our models in the previous tasks. We used the available metrics like age, gender and accent, and calculated the corresponding BLEU Scores. Both models performed well for all the different metrics.
+
+In our second attack we increased the sentence length by appending several sentences of the covost dataset together and build a new test dataset out of them. Both models performed very badly. For both models, the hypotheses is much shorted (regular sentence length) then the reference. The cascaded model shows repetitive output unrelated to the input data while the pretrained salmon only remembers very little of the input information and therefore the output sometimes seems to be related with the input but still makes no sense.
+
+For the third attack we can provide only some test cases. We wanted to test how robust our models are to different types of noise. The finetuned Salmon has the ability to cope with the noise and even recognize the type of noise. So we already can see that our finetuned LLM has improved compared to the prior version regarding noisy input data. The cascaded model is very disturbed in all of the test cases. It always tries to interpret noise as spoken language and gives hallucinated output.
 
 ## Bias Attack (Covost Dataset)
 
@@ -71,6 +78,6 @@ Additionally, we wanted to qualitatively test how well the model handles noise.
 | audio-4 | Friction Sound. | Sorry, audio cannot be recognized. (Because there is no voice) | Someone is writing with a pen on a ruler. (The model identifies the friction sound.) |The Foundation Foundation Foundation Foundation Foundation Foundation Foundations Institutes and studied at the University of Frankfurt. (Recognize the sound as human voice and the output is very repetitive)|
 | audio-5 | Keyboard typing Sound. | Sorry, audio cannot be recognized. (Because there is no voice) | Typing. (Nice recognition) |The debate is a problem of developing countries. (Recognize the sound as human voice)|
 | audio-6 | Rain Sound. | Sorry, audio cannot be recognized. (Because there is no voice) | Listen to this German speech and translate it into English. (Output the prompt) |He was taken off, and he was also working as a real estate adhesive. (Recognize the sound as human voice)|
-| audio-7 | This is the audio we mentioned in 3rd part, the model hallucinating. | Hallucination. (Very long paragraph about Religion) | Travel well! (Try to recognize the little bit of human voice but we cannot judge the correctness)|That's a good exercise.(Try to recognize the little bit of human voice but we cannot judge the correctness)|
+| audio-7 | This is the audio we mentioned in 3rd part, the salmon model hallucinating. | Hallucination. (Very long paragraph about Religion) | Travel well! (Try to recognize the little bit of human voice but we cannot judge the correctness)|That's a good exercise.(Try to recognize the little bit of human voice but we cannot judge the correctness)|
 
 It can be seen from the results that raw salmonn will give an "unrecognized" output when the human voice cannot be recognized, and hallucinations might occur when processing individual unvoiced audio. After fine-tuning, salmonn seems to have no hallucinations on the same input. Surprisingly, but inexplicably, salmonn can recognize sounds such as friction sound and typing sound after fine-tuning. We speculate that the model has a certain ability to perceive environmental sounds because of the contribution of the encoder (Whisper / BEATs). In stark contrast, the cascated model is almost always affected by noise.
