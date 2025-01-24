@@ -34,7 +34,7 @@ We essentially found out that SALMONN isn't supposed to handle audio sequences l
 That's why we decided to instead focus on out-of-domain attacks.
 
 ### Noisy Input 
-We already enhanced the performance of the SALMONN model with backgrounds on german speech by out fine-tuning
+We already enhanced the performance of the SALMONN model with background noice on german speech by fine-tuning
 on the german Covost dataset.
 
 
