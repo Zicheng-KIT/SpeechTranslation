@@ -23,16 +23,18 @@ We can see that our finetuned salmon model under performs on the switzerland dia
 This bias we want to fix by fine-tuning on swiss data.
 
 
-### 4. Out-of-domain attack
-We want to attack and fix the modal using the Europarl dataset
+### 4. Fix Out-of-domain shortcomings
+We first need to attack our model with the Europarl dataset which is out-of-domain as we didn't include it in our training data.
+
+Afterwards we want to try and fix it using in-context-learning
 
 ### Very Long Sentences
 We essentially found out that SALMONN isn't supposed to handle audio sequences longer than 30s.
 That's why we decided to instead focus on out-of-domain attacks.
 
 ### Noisy Input 
-Fix by Fine Tuning
- - Use example we have already
+We already enhanced the performance of the SALMONN model with backgrounds on german speech by out fine-tuning
+on the german Covost dataset.
 
 
 
