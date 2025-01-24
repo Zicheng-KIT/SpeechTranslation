@@ -6,7 +6,7 @@ First we want to try to fine-tune the ASR model on longer sentences.
 Otherwise if this doesn't work out well we would fix it by using a better model as ASR model which can handle longer audio files (either Wav2Vec or Whisper).
 For the translation we want to chunk the german text to translate it into English with our own machine translation model.
 
-### 2. Noisy Input
+### 2. Noisy Input (Add Preprocessing Step)
 We want to add background noise to the audiofiles of the covost dataset and check the performance. 
 With this input dataset we want to test different de-noisers and how they improve the performance on our cascaded model.
 
