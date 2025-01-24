@@ -1,17 +1,17 @@
 # Tackling systems' weaknesses
 
 ## Cascaded Model
-### 1. Very Long Sentences
+### 1. Very Long Sentences (Update Pipeline)
 Fix by using a better model as ASR model which can handle longer audio files (either Wav2Vec or Whisper)
 Then chunk the german text to translate it into English with our own machine translation model
 
-### 2. Noisy Input
+### 2. Noisy Input (Preprocessing Step)
 Fix with Audio Enhancement Module
 
 
 ## Salmonn Model
 
-### 3. Fix Accent Bias
+### 3. Fix Accent Bias (Fine-tuning)
 We can see that our finetuned salmon model under performs on the switzerland dialect.
 #### BLEU Scores by Accent
 | Accent       | Salmonn after Fine-tuning | Minimum Samples |
@@ -23,7 +23,7 @@ We can see that our finetuned salmon model under performs on the switzerland dia
 This bias we want to fix by fine-tuning on swiss data (we have approximately 3000 swiss speeches with aligned text).
 
 
-### 4. Fix Out-of-domain shortcomings
+### 4. Fix Out-of-domain shortcomings (In-context-learning)
 We first need to attack our model with the Europarl dataset which is out-of-domain as we didn't include it in our training data.
 
 Afterwards we want to try and fix it using in-context-learning
