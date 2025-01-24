@@ -1,9 +1,10 @@
 # Tackling systems' weaknesses
 
 ## Cascaded Model
-### 1. Very Long Sentences (Update Pipeline)
-Fix by using a better model as ASR model which can handle longer audio files (either Wav2Vec or Whisper)
-Then chunk the german text to translate it into English with our own machine translation model
+### 1. Very Long Sentences (Fine-tuning or Update Pipeline)
+First we want to try to fine-tune the ASR model on longer sentences.
+Otherwise if this doesn't work out well we would fix it by using a better model as ASR model which can handle longer audio files (either Wav2Vec or Whisper).
+For the translation we want to chunk the german text to translate it into English with our own machine translation model.
 
 ### 2. Noisy Input
 We want to add background noise to the audiofiles of the covost dataset and check the performance. 
