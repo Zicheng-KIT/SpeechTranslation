@@ -20,7 +20,7 @@ We can see that our finetuned salmon model under performs on the switzerland dia
 | Austria      | 36.686                    | 70 |
 | Switzerland  | 26.189                    | 56 |
 
-This bias we want to fix by fine-tuning on swiss data.
+This bias we want to fix by fine-tuning on swiss data (we have approximately 3000 swiss speeches with aligned text).
 
 
 ### 4. Fix Out-of-domain shortcomings
