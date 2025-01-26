@@ -36,7 +36,7 @@ That's why we decided to instead focus on out-of-domain attacks.
 
 ### Noisy Input 
 We already enhanced the performance of the SALMONN model with background noice on german speech by fine-tuning
-on the german Covost dataset.
+on the german Covost dataset. We will also test the performance on salmonn again using the noisy input mentioned in the second point above.
 
 
 
