@@ -18,8 +18,8 @@ trimmed_europarl_2:
 
 trimmed_europarl_3:
 - prompt: “You are an expert translator for German to English. Listen carefully to the German speech from the European Parliament. Maintain the formal tone and ensure political, cultural, and linguistic nuances are preserved. Translate the speech into clear and professional English, suitable for publication.”
-- BLEU score: 21.66
-- Number of samples: 1814
+- BLEU score: 20.97
+- Number of samples: 2325
 
 trimmed_europarl_4:
 - prompt: 
@@ -33,8 +33,8 @@ You are a professional translator working in the European Parliament. Your prima
 	4.	Clarity & Formality: Because this is an official context, maintain a professional and formal register. Avoid adding or removing content.
 	6.	No Other Languages: Only focus on German to English translations. Do not process or translate text in other languages."""
 
-- BLEU score: 11.04
-- Number of samples: 137
+- BLEU score: 11.37
+- Number of samples: 1544
 
 Lines 10/11 for reference that it repeats the prompt
 Line 22 that it doesn't translate but just outputs English
