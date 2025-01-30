@@ -1,3 +1,0 @@
-- We randomly added backgroundnoise from https://www.kaggle.com/datasets/chrisfilo/demand to the audiofiles of the covost dataset.
-  - We then added the column 'noise_type' to the covost manifest file depending which randomly selected type of noise is now included in the corresponding audio file. With this new dataset we now can calculate BLUE and WER Scores for each type of noise and see how it affects our model.
-  - After attacking our model with this noisy dataset we deside which categories of noise we want to taggle and which filter we gonna use for it.
