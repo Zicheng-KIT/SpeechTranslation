@@ -33,4 +33,4 @@ After attacking our model with this noisy dataset we deside which categories of 
 ## Finetune our ASR Model
 | Long Sentences Count    | Cascaded approach using original ASR Model | Cascaded approach using finetuned ASR Model|
 |---------------|--------------------|--------|
-| 200  | TODO             |3.975   |
+| 200  | 0.01             |3.975   |
