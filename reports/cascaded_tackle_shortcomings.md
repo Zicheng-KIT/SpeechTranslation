@@ -1,5 +1,6 @@
   
-## Performance on our noisy dataset
+# Noisy Input
+## Performance on our Noisy Dataset
 We randomly added background noise from https://www.kaggle.com/datasets/chrisfilo/demand to the audiofiles of the covost dataset.
 We then added the column 'noise_type' to the covost manifest file depending on which randomly selected type of noise is included in the corresponding audio file. 
 With this new dataset we now can calculate BLUE Score for each type of noise and see how it affects our model.
@@ -27,3 +28,9 @@ With this new dataset we now can calculate BLUE Score for each type of noise and
 
 ## Tackle Noise with Filter
 After attacking our model with this noisy dataset we deside which categories of noise we want to tackle and which filter we are using.
+
+# Very long Sentences
+## Finetune our ASR Model
+| Long Sentences Count    | Cascaded approach using original ASR Model | Cascaded approach using finetuned ASR Model|
+|---------------|--------------------|--------|
+| 200  | TODO             |3.975   |
